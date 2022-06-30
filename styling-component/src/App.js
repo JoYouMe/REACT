@@ -1,9 +1,9 @@
 import logo from "./logo.svg";
 import "./App.css";
-import SassComponent from "./components/SassComponent";
+import CSSModule from "./components/CSSModule";
 
 function App() {
-  return <SassComponent></SassComponent>;
+  return <CSSModule></CSSModule>;
 }
 
 export default App;

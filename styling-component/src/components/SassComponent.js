@@ -1,5 +1,5 @@
 import React from "react";
-import "../Scss/Sasscomponent.scss";
+import "../scss/SassComponent.scss";
 
 const SassComponent = () => {
   return (
@@ -11,7 +11,6 @@ const SassComponent = () => {
       <div className="box blue"></div>
       <div className="box indigo"></div>
       <div className="box violet"></div>
-      <div></div>
     </div>
   );
 };
