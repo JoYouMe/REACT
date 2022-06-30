@@ -1,12 +1,18 @@
 .wrapper {
-    background: black;
-    padding: 1rem;
-    color: white;
-    font-size: 2rem;
+  background: black;
+  padding: 1rem;
+  color: white;
+  font-size: 2rem;
 }
 
 /*글로벌 클래스 작성*/
 :global .something {
-    font-weight: bold;
-    color: aqua;
+  font-weight: bold;
+  color: aqua;
+}
+
+.inverted {
+  color: black;
+  background: white;
+  border: 1px solid black;
 }
