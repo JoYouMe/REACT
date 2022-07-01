@@ -1,5 +1,5 @@
 import './App.css';
-import {useState, useRef, useCallback} from 'react';
+import { useState, useRef, useCallback } from 'react';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
 import TodoTemplate from './components/TodoTemplate';
@@ -25,32 +25,41 @@ function App() {
 
   const nextId = useRef(4);
 
-  const onInsert = useCallback(text => {
-    const todo = {
-      id: nextId.current,
-      text: text,
-      checked: false,
-    };
-    setTodos(todos.concat(todo));
-    nextId.current += 1;
-  }, [todos]);
+  const onInsert = useCallback(
+    (text) => {
+      const todo = {
+        id: nextId.current,
+        text: text,
+        checked: false,
+      };
+      setTodos(todos.concat(todo));
+      nextId.current += 1;
+    },
+    [todos],
+  );
 
   const onRemove = useCallback(
-    id => { //id값을 매개변수로 불러옴
-      setTodos(todos.filter(todo => todo.id !== id));
+    (id) => {
+      //id값을 매개변수로 불러옴
+      setTodos(todos.filter((todo) => todo.id !== id));
     },
-    [todos] //todo가 변경되었을 때 함수 생성
+    [todos], //todo가 변경되었을 때 함수 생성
   );
 
   const onChecked = useCallback(
-    id => {
-      setTodos(todos.map(todo => todo.id === id ? { ...todo, checked: !todo.checked } : todo))
-    }, [todos]
+    (id) => {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, checked: !todo.checked } : todo,
+        ),
+      );
+    },
+    [todos],
   );
 
   return (
     <TodoTemplate>
-      <TodoInsert onInsert={onInsert}/>
+      <TodoInsert onInsert={onInsert} />
       <TodoList todos={todos} onRemove={onRemove} onChecked={onChecked} />
     </TodoTemplate>
   );
