@@ -1,0 +1,5 @@
+1. 할 일 목록(TodoList) 구현
+    - TodoTemplate: 다른 세 개의 컴포넌트를 감싸는 템플릿 컴포넌트
+    - TodoInsert: 할 일을 추가하는 컴포넌트
+    - TodoListItem: 할 일을 보여주는 컴포넌트
+    - TodoList: TodoListItem의 할 일들을 리스트로 보여주는 컴포넌트
