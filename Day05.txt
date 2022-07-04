@@ -40,3 +40,14 @@
 
 2. 불변성을 쉽게 유지해주는 immer 라이브러리
     - immer 라이브러리를 사용하면 불변성을 신경쓰지 않는 것처럼 코드를 작성하되 불변성 관리는 제대로 이루어짐
+
+3. React Router로 SPA(Single Page Application) 구현
+    - Routing : 웹 어플리케이션에서 사용자가 요청한 url에 따라 알맞는 페이지를 보여주는 것을 의미
+               글쓰기 페이지, 글 목록 페이지, 글 상세페이지 등
+               여러 페이지로 구성된 웹 어플리케이션을 만들 때 페이지 별로 컴포넌트를 분리해가면서 프로젝트를 관리하기 위해 필요한 것이 라우팅 시스템
+    - React에서는 React Router라는 라이브러리를 사용하여 Routing 시스템 구축
+    - SPA(Single Page Application): 하나의 페이지로 구성된 웹 어플리케이션
+    - 기존 웹 어플리케이션에서는 사용자 요청에 따라 WAS(Web Application Server)에서 요청에 맞는 페이지들을 반환
+    - MPA(Multiple Page Application) : 글쓰기 페이지를 요청하면 글 쓰기.html, 글쓰기.jsp 등 페이지들을 반환
+    - SPA에서는 사용자 요청에 따라 WAS에서 JSON 데이터만 반환해주고 해당 페이지에서 데이터 변경에 따라 리렌더링
+    - React Router 이용하면 손쉽게 SPA 구현 가능

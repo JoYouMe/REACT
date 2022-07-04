@@ -9,17 +9,14 @@ function App() {
     uselessValue: null,
   });
 
-  const handleChange = useCallback(
-    (e) => {
-      const { name, value } = e.target;
-      setForm(
-        produce(form, (draft) => {
-          draft[name] = value;
-        })
-      );
-    },
-    [form]
-  );
+  const handleChange = useCallback((e) => {
+    const { name, value } = e.target;
+    setForm(
+      produce((draft) => {
+        draft[name] = value;
+      })
+    );
+  }, []);
 
   const handleSubmit = useCallback(
     (e) => {
@@ -31,7 +28,7 @@ function App() {
       };
 
       setData(
-        produce(data, (draft) => {
+        produce((draft) => {
           draft.array.push(info);
         })
       );
@@ -43,7 +40,7 @@ function App() {
 
       nextId.current += 1;
     },
-    [data, form.name, form.username]
+    [form.name, form.username]
   );
 
   const handleRemove = useCallback(
