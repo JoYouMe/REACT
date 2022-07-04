@@ -6,7 +6,7 @@ const Article = () => {
 
   return (
     <div>
-      <h2>게시글 {id} </h2>
+      <h2>게시글 {id}</h2>
     </div>
   );
 };
