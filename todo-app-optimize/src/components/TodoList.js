@@ -1,6 +1,6 @@
-import React from 'react';
-import TodoListItem from './TodoListItem';
-import '../styles/TodoList.scss';
+import React from "react";
+import TodoListItem from "./TodoListItem";
+import "../styles/TodoList.scss";
 
 const TodoList = ({ todos, onRemove, onChecked }) => {
   return (
@@ -17,4 +17,4 @@ const TodoList = ({ todos, onRemove, onChecked }) => {
   );
 };
 
-export default TodoList;
+export default React.memo(TodoList);
