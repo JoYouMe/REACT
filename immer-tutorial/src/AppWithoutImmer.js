@@ -1,7 +1,6 @@
 import { useRef, useState, useCallback } from "react";
-import produce from "immer"; //immer에서 제공하는 produce를 이용하여 불변성
 
-function App() {
+function AppWithoutImmer() {
   const nextId = useRef(1);
   const [form, setForm] = useState({ name: "", username: "" });
   const [data, setData] = useState({
@@ -12,11 +11,10 @@ function App() {
   const handleChange = useCallback(
     (e) => {
       const { name, value } = e.target;
-      setForm(
-        produce(form, (draft) => {
-          draft[name] = value;
-        })
-      );
+      setForm({
+        ...form,
+        [name]: value,
+      });
     },
     [form]
   );
@@ -81,4 +79,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppWithoutImmer;
