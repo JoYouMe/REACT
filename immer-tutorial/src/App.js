@@ -1,5 +1,5 @@
 import { useRef, useState, useCallback } from "react";
-import produce from "immer"; //immer에서 제공하는 produce를 이용하여 불변성
+import produce from "immer"; //불변성
 
 function App() {
   const nextId = useRef(1);
@@ -30,10 +30,11 @@ function App() {
         username: form.username,
       };
 
-      setData({
-        ...data,
-        array: data.array.concat(info),
-      });
+      setData(
+        produce(data, (draft) => {
+          draft.array.push(info);
+        })
+      );
 
       setForm({
         name: "",
@@ -51,6 +52,13 @@ function App() {
         ...data,
         array: data.array.filter((info) => info.id !== id),
       });
+      //소스코드가 복잡해질 때는 그냥 immer 사용하지 않고 작성
+      // produce(data, (draft) => {
+      //   draft.array.splice(
+      //     draft.array.findIndex((info) => info.id === id),
+      //     1
+      //   );
+      // })
     },
     [data]
   );
