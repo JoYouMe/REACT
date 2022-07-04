@@ -8,6 +8,8 @@ import Articles from "./components/Articles";
 import Article from "./components/Article";
 import Layout from "./components/Layout";
 import NotFound from "./components/NotFound";
+import Mypage from "./components/Mypage";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/articles" element={<Articles />}>
           <Route path=":id" element={<Article />}></Route>
         </Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/login" element={<Mypage />}></Route>
       </Route>
       <Route path="*" element={<NotFound />}></Route>
     </Routes>
