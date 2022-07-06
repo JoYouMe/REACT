@@ -1,0 +1,4 @@
+1. 리덕스를 편하게 사용하기
+    - redux-actions: 액션 생성 함수를 더 짧게 구현 가능
+                     리듀서 함수에도 switch/case문이 아닌 handleActions라는 함수를 사용하여 구현
+    - 
