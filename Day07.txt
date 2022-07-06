@@ -4,4 +4,4 @@
     - Hooks로 connet 대체하기
       useSelector: 리덕스 스토어의 상태값 조회하는 함수
       useDispatch: 액션을 실행시키는 Hook
-      useStore: 컴포넌트 내부에서 직접 스토어에 접근 가능한 Hook
+      useS-Store: 컴포넌트 내부에서 직접 스토어에 접근 가능한 Hook
