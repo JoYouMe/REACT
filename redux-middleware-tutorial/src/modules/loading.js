@@ -1,13 +1,13 @@
 import { createAction, handleActions } from "redux-actions";
 
-//1. 액션 타입 정의
+//1.액션 타입 정의
 const START_LOADING = "loading/START_LOADING";
-const FINISH_LOADING = "loading.FINISH_LOADING";
+const FINISH_LOADING = "loading/FINISH_LOADING";
 
-//2. 액션 생성 함수 정의
+//2.액션 생성 함수 정의
 export const startLoading = createAction(
   START_LOADING,
-  //request 타입을 patload로 지정
+  //request 타입을 payload로 지정
   //payload: GET_POST, GET_USERS
   (requestType) => requestType
 );

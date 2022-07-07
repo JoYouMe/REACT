@@ -1,8 +1,6 @@
-import { createAction, handleActions } from "redux-actions";
+import { handleActions } from "redux-actions";
 import * as api from "../lib/api";
 import createRequestThunk from "../lib/createRequestThunk";
-import { call, put, take, takeLatest } from "redux-saga/effects";
-import { startLoading, finishLoading } from "./loading";
 
 //1. 액션 타입 정의
 const GET_POST = "sample/GET_POST";
@@ -14,59 +12,49 @@ const GET_USERS_SUCCESS = "sample/GET_USERS_SUCCESS";
 const GET_USERS_FAILURE = "sample/GET_USERS_FAILURE";
 
 //2. thunk 함수 정의
-export const getPost = createAction(GET_POST, (id) => id);
-export const getUsers = createAction(GET_USERS);
-
-//제네레이터 함수 정의
-function* getPostSaga(action) {
-  yield put(startLoading(GET_POST));
+export const getPostThunk = createRequestThunk(GET_POST, api.getPost);
+export const getUsersThunk = createRequestThunk(GET_USERS, api.getUsers);
+/*export const getPost = (id) => async (dispatch) => {
+  //요청 시작을 알림
+  dispatch({ type: GET_POST });
   try {
-    //call 호출하면 Promise를 반환하는 함수를 호출하고
-    //응답을 기다린다.
-    //첫 번째 파라미터에는 함수를 두 번째 파라미터에는 해당 함수에
-    //포함될 매개변수를 넣어준다
-    //api.getPost(aciont.payload);
-    const post = yield call(api.getPost, action.payload);
-    yield put({
+    const response = await api.getPost(id);
+    dispatch({
       type: GET_POST_SUCCESS,
-      payload: post.data,
+      payload: response.data,
     });
   } catch (e) {
-    console.log(e);
-    yield put({
+    dispatch({
       type: GET_POST_FAILURE,
       payload: e,
       error: true,
     });
+    //나중에 컴포넌트 단에서도 에러를 조회할 수 있도록 에러를 던져줌
     throw e;
   }
-  yield put(finishLoading(GET_POST));
-}
+};*/
 
-function* getUsersSaga(action) {
-  yield put(startLoading(GET_USERS));
+/*export const getUsers = () => async (dispatch) => {
+  //요청 시작을 알림
+  dispatch({
+    type: GET_USERS,
+  });
+
   try {
-    const users = yield call(api.getUsers);
-    yield put({
+    const response = await api.getUsers();
+    dispatch({
       type: GET_USERS_SUCCESS,
-      payload: users.data,
+      payload: response.data,
     });
   } catch (e) {
-    console.log(e);
-    yield put({
+    dispatch({
       type: GET_USERS_FAILURE,
       payload: e,
       error: true,
     });
     throw e;
   }
-  yield put(finishLoading(GET_USERS));
-}
-
-export function* sampleSaga() {
-  yield takeLatest(GET_POST, getPostSaga);
-  yield takeLatest(GET_USERS, getUsersSaga);
-}
+};*/
 
 //3. 초기 상태 정의
 const initialState = {
@@ -75,7 +63,7 @@ const initialState = {
 };
 
 //4. 리듀서 함수 정의
-const sample = handleActions(
+const sampleThunk = handleActions(
   {
     [GET_POST]: (state) => ({
       ...state,
@@ -101,4 +89,4 @@ const sample = handleActions(
   initialState
 );
 
-export default sample;
+export default sampleThunk;
