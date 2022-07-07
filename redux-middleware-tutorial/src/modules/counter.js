@@ -12,6 +12,19 @@ export const decrease = createAction(DECREASE);
 //초기 상태가 항상 객체일 필요는 없다.
 const initialState = 0;
 
+//thunk 함수 정의
+export const increaseAsync = () => (dispatch) => {
+  setTimeout(() => {
+    dispatch(increase());
+  }, 1000);
+};
+
+export const decreaseAsync = () => (dispatch) => {
+  setTimeout(() => {
+    dispatch(decrease());
+  }, 1000);
+};
+
 //4. 리듀서 함수 정의
 const counter = handleActions(
   {
